@@ -12,13 +12,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "bb",
+      "vw",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "bb",
+      "vw",
       "kebab-case"
     ],
     "import-blacklist": [

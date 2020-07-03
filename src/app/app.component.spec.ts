@@ -24,6 +24,6 @@ describe('AppComponent', () => {
   });
 
   it('title', () => {
-    expect(component.title).toBe('bb-app');
+    expect(component.title).toBe('vw-app');
   });
 });

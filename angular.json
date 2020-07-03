@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "bb-app": {
+    "vw-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -12,12 +12,12 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "bb",
+      "prefix": "vw",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/bb-app",
+            "outputPath": "dist/vw-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bb-app:build"
+            "browserTarget": "vw-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "bb-app:build:production"
+              "browserTarget": "vw-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bb-app:build"
+            "browserTarget": "vw-app:build"
           }
         },
         "test": {
@@ -118,18 +118,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "bb-app:serve"
+            "devServerTarget": "vw-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "bb-app:serve:production"
+              "devServerTarget": "vw-app:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "bb-app",
+  "defaultProject": "vw-app",
   "schematics": {
     "@schematics/angular:component": {
       "changeDetection": "OnPush"

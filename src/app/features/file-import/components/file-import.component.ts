@@ -8,7 +8,7 @@ import { debounceTime, distinctUntilChanged, filter, takeUntil, tap } from 'rxjs
 import { FileStoreService } from '../services/file-store.service';
 
 @Component({
-  selector: 'bb-file-import',
+  selector: 'vw-file-import',
   templateUrl: './file-import.component.html',
   styleUrls: ['./file-import.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
