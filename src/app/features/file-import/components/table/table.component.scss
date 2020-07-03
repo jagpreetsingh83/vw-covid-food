@@ -1,0 +1,13 @@
+.table {
+  &__norecords {
+    text-align: center;
+    padding: 3rem;
+  }
+}
+
+.mat-column-name,
+.mat-column-surname,
+.mat-column-issueCount,
+.mat-column-dob {
+  width: 25%;
+}
