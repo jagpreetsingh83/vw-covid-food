@@ -1,4 +1,11 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit
+} from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FileRecord } from '../../models/file-import-models';
 
 @Component({
   selector: 'vw-details',
@@ -7,10 +14,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetailsComponent implements OnInit {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: FileRecord) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  get url() {
+    return `https://www.google.com/maps/embed/v1/place?key=AIzaSyB49GgrhM-pSmAukBKCPc6q6gHNMHo4MrU&q=${this.data.schoolname}`;
   }
-
 }

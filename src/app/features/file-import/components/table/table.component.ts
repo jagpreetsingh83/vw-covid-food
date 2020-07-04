@@ -67,9 +67,10 @@ export class TableComponent extends BaseComponent implements OnInit {
     });
   }
 
-  openDialog() {
-    console.log('HEre..');
-    const dialogRef = this.dialog.open(DetailsComponent);
+  openDialog(data: FileRecord) {
+    const dialogRef = this.dialog.open(DetailsComponent, {
+      data
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
