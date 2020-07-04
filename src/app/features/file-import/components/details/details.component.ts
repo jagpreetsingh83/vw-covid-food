@@ -19,6 +19,6 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {}
 
   get url() {
-    return `https://www.google.com/maps/embed/v1/place?key=AIzaSyB49GgrhM-pSmAukBKCPc6q6gHNMHo4MrU&q=${this.data.schoolname}`;
+    return `https://www.google.com/maps/embed/v1/place?key=AIzaSyB49GgrhM-pSmAukBKCPc6q6gHNMHo4MrU&q=${this.data.siteaddress}`;
   }
 }

@@ -5,6 +5,7 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -13,7 +14,12 @@ import { BaseComponent } from '@app/shared/components/base/base.component';
 import { FileRecord } from '@file/models/file-import-models';
 import { NGXLogger } from 'ngx-logger';
 import { Observable } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  takeUntil,
+  tap
+} from 'rxjs/operators';
 import { DetailsComponent } from '../details/details.component';
 
 @Component({
@@ -34,17 +40,17 @@ export class TableComponent extends BaseComponent implements OnInit {
   @Input() records: Observable<FileRecord[]>;
   @Input() isLoading: Observable<boolean>;
 
+  // Filter Field
+  filterField = new FormControl();
+
   dataSource: MatTableDataSource<FileRecord>;
   displayedColumns = [
     'district',
-    'sfcode',
-    'bldgcode',
     'schoolname',
     'siteaddress',
+    'city',
     'zip',
     'accessibility',
-    'longitude',
-    'latitude',
     'koshermealtype',
     'star'
   ];
@@ -65,6 +71,7 @@ export class TableComponent extends BaseComponent implements OnInit {
         this.dataSource.sort = this.sort;
       }
     });
+    this.registerFilterChange();
   }
 
   openDialog(data: FileRecord) {
@@ -75,5 +82,27 @@ export class TableComponent extends BaseComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  private registerFilterChange() {
+    this.filterField.valueChanges
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged(),
+        tap(input =>
+          this.logger.debug('Applying filter on Issue Count', input)
+        ),
+        takeUntil(this.destroyed)
+      )
+      .subscribe(input => {
+        this.dataSource.filter = input.trim().toLowerCase();
+        if (this.dataSource.paginator) {
+          this.dataSource.paginator.firstPage();
+        }
+      });
+  }
+
+  clearFilter() {
+    this.filterField.reset('');
   }
 }

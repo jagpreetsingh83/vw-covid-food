@@ -1,21 +1,3 @@
-<main class="file">
-  <aside class="file__toolbar">
-    <!-- FILTER -->
-    <mat-form-field>
-      <input
-        [formControl]="issueCountField"
-        matInput
-        type="number"
-        placeholder="Filter"
-        aria-label="Enter a value to filter on issue count"
-      />
-      <mat-hint>
-        &#8804; Issue Count
-      </mat-hint>
-    </mat-form-field>
-  </aside>
-  <!-- TABLE -->
-  <section>
-    <vw-table [records]="records$" [isLoading]="loading$"></vw-table>
-  </section>
+<main class="container">
+  <vw-table [records]="records$" [isLoading]="loading$"></vw-table>
 </main>

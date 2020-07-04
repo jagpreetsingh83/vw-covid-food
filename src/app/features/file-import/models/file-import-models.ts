@@ -5,6 +5,7 @@ export class FileRecord {
     public bldgcode: string,
     public schoolname: string,
     public siteaddress: string,
+    public city: string,
     public zip: string,
     public accessibility: string,
     public longitude: number,

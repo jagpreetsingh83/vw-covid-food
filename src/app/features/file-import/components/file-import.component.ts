@@ -4,17 +4,9 @@ import {
   Inject,
   OnInit
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { MatSnackBar, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 import { BaseComponent } from '@app/shared/components/base/base.component';
-import { NGXLogger } from 'ngx-logger';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  filter,
-  takeUntil,
-  tap
-} from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 import { FileStoreService } from '../services/file-store.service';
 
 @Component({
@@ -24,17 +16,12 @@ import { FileStoreService } from '../services/file-store.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FileImportComponent extends BaseComponent implements OnInit {
-  issueCountField = new FormControl();
-
   loading$ = this.fileStore.selectLoading$;
   records$ = this.fileStore.filteredRecords$;
   error$ = this.fileStore.selectError$;
 
-  fileName: string;
-
   constructor(
     private fileStore: FileStoreService,
-    private logger: NGXLogger,
     private snackBar: MatSnackBar,
     @Inject(MAT_SNACK_BAR_DATA) public config: any
   ) {
@@ -42,9 +29,11 @@ export class FileImportComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.handleIssueCountChange();
+    // Handle API Errors
     this.handleError();
-    this.onFileChange();
+
+    // Trigger Read
+    this.fileStore.readFile();
   }
 
   private handleError() {
@@ -56,30 +45,5 @@ export class FileImportComponent extends BaseComponent implements OnInit {
       .subscribe(error => {
         this.snackBar.open(error, 'Error', this.config);
       });
-  }
-
-  private handleIssueCountChange() {
-    this.issueCountField.valueChanges
-      .pipe(
-        debounceTime(500),
-        distinctUntilChanged(),
-        tap(input =>
-          this.logger.debug('Applying filter on Issue Count', input)
-        ),
-        takeUntil(this.destroyed)
-      )
-      .subscribe(input => this.fileStore.setIssueCount(input));
-  }
-
-  onFileChange() {
-    this.logger.debug('Resetting...');
-    this.resetSelection();
-    this.fileStore.readFile();
-  }
-
-  private resetSelection() {
-    this.fileName = null;
-    this.issueCountField.reset();
-    this.fileStore.reset();
   }
 }

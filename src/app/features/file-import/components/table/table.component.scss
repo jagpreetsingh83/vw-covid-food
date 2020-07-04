@@ -1,12 +1,19 @@
+// TODO move it to mixins.scss
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header {
+  @include flex-center();
+}
+
 .table {
   &__norecords {
     text-align: center;
     padding: 3rem;
   }
-}
-
-[class^='mat-column-'] {
-  flex: 1;
 }
 
 tr:hover {

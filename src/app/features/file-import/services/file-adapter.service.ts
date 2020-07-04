@@ -6,6 +6,7 @@ import { AOA, FileRecord } from '@file/models/file-import-models';
 export class FileRecordAdapter implements Adapter<FileRecord> {
   adapt(item: any[]): FileRecord {
     return new FileRecord(
+      item[8],
       item[9],
       item[10],
       item[11],
