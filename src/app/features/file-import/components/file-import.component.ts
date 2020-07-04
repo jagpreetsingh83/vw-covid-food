@@ -1,10 +1,20 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MAT_SNACK_BAR_DATA, MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { NGXLogger } from 'ngx-logger';
-import { debounceTime, distinctUntilChanged, filter, takeUntil, tap } from 'rxjs/operators';
-
+import {
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  takeUntil,
+  tap
+} from 'rxjs/operators';
 import { FileStoreService } from '../services/file-store.service';
 
 @Component({
@@ -34,6 +44,7 @@ export class FileImportComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.handleIssueCountChange();
     this.handleError();
+    this.onFileChange();
   }
 
   private handleError() {
@@ -60,12 +71,10 @@ export class FileImportComponent extends BaseComponent implements OnInit {
       .subscribe(input => this.fileStore.setIssueCount(input));
   }
 
-  onFileChange(evt: any) {
+  onFileChange() {
     this.logger.debug('Resetting...');
     this.resetSelection();
-    this.fileStore.readFile(evt.target);
-    const { files } = evt.target;
-    this.fileName = files && files.length === 1 && files[0].name;
+    this.fileStore.readFile();
   }
 
   private resetSelection() {

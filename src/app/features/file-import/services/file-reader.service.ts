@@ -1,14 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AOA } from '@file/models/file-import-models';
-import { Observable, Subject } from 'rxjs';
-import * as XLSX from 'xlsx';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class FileReaderService {
-  read(target: DataTransfer): Observable<AOA> {
-    const records$ = new Subject<AOA>();
+  constructor(private http: HttpClient) {}
 
-    records$.next([[1],[2]]);
+  read(): Observable<AOA> {
+    return this.http
+      .get<AOA>(
+        'https://data.cityofnewyork.us/api/views/sp4a-vevi/rows.json?accessType=DOWNLOAD'
+      )
+      .pipe(map(response => response['data']));
+
+    // records$.next([[1, 2, 3]]);
 
     // if (target.files.length !== 1) {
     //   records$.error(Error('Cannot use multiple files'));
@@ -33,7 +40,5 @@ export class FileReaderService {
     //   records$.complete();
     // };
     // reader.readAsBinaryString(target.files[0]);
-
-    return records$.asObservable();
   }
 }

@@ -1,5 +1,4 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-
 import * as fromFile from '../reducers/file.reducer';
 
 export const selectFileState = createFeatureSelector<fromFile.FileState>(
@@ -18,8 +17,8 @@ export const selectError = createSelector(
 
 export const selectFilteredRecords = createSelector(
   selectFileState,
-  (state: fromFile.FileState) =>
-    !!state.issueCount || state.issueCount === 0
-      ? state.records.filter(r => r.issueCount <= state.issueCount)
-      : state.records
+  (state: fromFile.FileState) => state.records
+  // !!state.issueCount || state.issueCount === 0
+  //   ? state.records.filter(r => r.issueCount <= state.issueCount)
+  //   : state.records
 );

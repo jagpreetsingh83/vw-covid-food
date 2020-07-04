@@ -1,10 +1,7 @@
 import { FileRecord } from '@file/models/file-import-models';
 import { createAction, props } from '@ngrx/store';
 
-export const readFile = createAction(
-  '[File] Load Files',
-  props<{ payload: { file: DataTransfer } }>()
-);
+export const readFile = createAction('[File] Load Files');
 
 export const readFileSuccess = createAction(
   '[File] Load Files Success',

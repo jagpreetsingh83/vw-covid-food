@@ -10,8 +10,8 @@ export class FileStoreService {
 
   constructor(private store: Store<FileStore.FileState>) {}
 
-  readFile(file: DataTransfer) {
-    this.store.dispatch(FileStore.readFile({ payload: { file } }));
+  readFile() {
+    this.store.dispatch(FileStore.readFile());
   }
 
   setIssueCount(issueCount: number) {

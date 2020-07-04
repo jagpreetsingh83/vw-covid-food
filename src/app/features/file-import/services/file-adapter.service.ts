@@ -5,7 +5,18 @@ import { AOA, FileRecord } from '@file/models/file-import-models';
 @Injectable()
 export class FileRecordAdapter implements Adapter<FileRecord> {
   adapt(item: any[]): FileRecord {
-    return new FileRecord(item[0], item[1], item[2], item[3]);
+    return new FileRecord(
+      item[9],
+      item[10],
+      item[11],
+      item[12],
+      item[13],
+      item[14],
+      item[15],
+      item[16],
+      item[17],
+      item[18]
+    );
   }
 }
 

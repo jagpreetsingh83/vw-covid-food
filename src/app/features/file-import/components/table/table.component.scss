@@ -5,9 +5,10 @@
   }
 }
 
-.mat-column-name,
-.mat-column-surname,
-.mat-column-issueCount,
-.mat-column-dob {
-  width: 25%;
+[class^='mat-column-'] {
+  flex: 1;
+}
+
+tr:hover {
+  background: whitesmoke;
 }
