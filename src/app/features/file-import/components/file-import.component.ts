@@ -17,7 +17,7 @@ import { FileStoreService } from '../services/file-store.service';
 })
 export class FileImportComponent extends BaseComponent implements OnInit {
   loading$ = this.fileStore.selectLoading$;
-  records$ = this.fileStore.filteredRecords$;
+  records$ = this.fileStore.records$;
   error$ = this.fileStore.selectError$;
 
   constructor(

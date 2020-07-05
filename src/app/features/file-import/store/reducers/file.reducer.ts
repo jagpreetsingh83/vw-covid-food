@@ -1,7 +1,12 @@
 import { FileRecord } from '@file/models/file-import-models';
 import { Action, createReducer, on } from '@ngrx/store';
-import { Loadable, loadInit, onLoad, onLoadFail, onLoadSuccess } from '@shared/models/loadable.models';
-
+import {
+  Loadable,
+  loadInit,
+  onLoad,
+  onLoadFail,
+  onLoadSuccess
+} from '@shared/models/loadable.models';
 import * as FileActions from '../actions/file.actions';
 
 export const fileFeatureKey = 'file';
@@ -31,10 +36,6 @@ const fileReducer = createReducer(
   on(FileActions.readFileFailure, (state, { error }) => ({
     ...state,
     ...onLoadFail(error)
-  })),
-  on(FileActions.setIssueCount, (state, { payload: { issueCount } }) => ({
-    ...state,
-    issueCount
   })),
   on(FileActions.reset, () => ({
     ...initialState

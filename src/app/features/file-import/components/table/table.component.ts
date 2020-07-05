@@ -75,13 +75,9 @@ export class TableComponent extends BaseComponent implements OnInit {
   }
 
   openDialog(data: FileRecord) {
-    const dialogRef = this.dialog.open(DetailsComponent, {
+    this.dialog.open(DetailsComponent, {
       data,
       width: '50%'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 

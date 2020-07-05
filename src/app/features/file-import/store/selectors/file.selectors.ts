@@ -15,10 +15,7 @@ export const selectError = createSelector(
   (state: fromFile.FileState) => state.error
 );
 
-export const selectFilteredRecords = createSelector(
+export const selectRecords = createSelector(
   selectFileState,
   (state: fromFile.FileState) => state.records
-  // !!state.issueCount || state.issueCount === 0
-  //   ? state.records.filter(r => r.issueCount <= state.issueCount)
-  //   : state.records
 );

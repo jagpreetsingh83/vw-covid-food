@@ -10,7 +10,8 @@ export class FileRecord {
     public accessibility: string,
     public longitude: number,
     public latitude: number,
-    public koshermealtype: number
+    public koshermealtype: number,
+    public locationUrl: string
   ) {}
 }
 

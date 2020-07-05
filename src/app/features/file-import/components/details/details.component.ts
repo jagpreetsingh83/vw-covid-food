@@ -17,8 +17,4 @@ export class DetailsComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: FileRecord) {}
 
   ngOnInit(): void {}
-
-  get url() {
-    return `https://www.google.com/maps/embed/v1/place?key=AIzaSyB49GgrhM-pSmAukBKCPc6q6gHNMHo4MrU&q=${this.data.siteaddress}`;
-  }
 }

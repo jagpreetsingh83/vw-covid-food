@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { endpointUrls } from '@app/endpoints';
 import { Adapter } from '@app/shared/models/app.models';
 import { AOA, FileRecord } from '@file/models/file-import-models';
 
@@ -16,7 +17,8 @@ export class FileRecordAdapter implements Adapter<FileRecord> {
       item[15],
       item[16],
       item[17],
-      item[18]
+      item[18],
+      endpointUrls.LOCATION_URL(item[12])
     );
   }
 }
