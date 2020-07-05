@@ -16,6 +16,20 @@
   }
 }
 
+// Highlight the row on mouse hover
 tr:hover {
   background: whitesmoke;
+}
+
+// All columns equal width
+[class^='mat-column-'] {
+  flex: 1;
+}
+// School Name slightly wider
+.mat-column-schoolname {
+  flex: 2;
+}
+.mat-column-district,
+.mat-column-star {
+  flex: 0.5;
 }
