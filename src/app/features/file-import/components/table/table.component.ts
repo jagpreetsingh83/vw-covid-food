@@ -86,9 +86,7 @@ export class TableComponent extends BaseComponent implements OnInit {
       .pipe(
         debounceTime(500),
         distinctUntilChanged(),
-        tap(input =>
-          this.logger.debug('Applying filter on Issue Count', input)
-        ),
+        tap(input => this.logger.debug('Applying filter on list', input)),
         takeUntil(this.destroyed)
       )
       .subscribe(input => {
