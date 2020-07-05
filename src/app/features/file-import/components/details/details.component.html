@@ -1,33 +1,59 @@
-<p class="mat-body-strong">District</p>
-<span class="mat-body">{{ data.district }}</span>
+<h2 mat-dialog-title>
+  {{ data.schoolname }}
+</h2>
 
-<p class="mat-body-strong">SF Code</p>
-<span class="mat-body">{{ data.sfcode }}</span>
+<mat-dialog-content>
+  <div class="row">
+    <div class="column">
+      <p class="mat-body-strong">District</p>
+      <span class="mat-body">{{ data.district }}</span>
+    </div>
+    <div class="column">
+      <p class="mat-body-strong">SF Code</p>
+      <span class="mat-body">{{ data.sfcode }}</span>
+    </div>
+  </div>
 
-<p class="mat-body-strong">Building Code</p>
-<span class="mat-body">{{ data.bldgcode }}</span>
+  <div class="row">
+    <div class="column">
+      <p class="mat-body-strong">Building Code</p>
+      <span class="mat-body">{{ data.bldgcode }}</span>
+    </div>
+    <div class="column">
+      <p class="mat-body-strong">School Name</p>
+      <span class="mat-body">{{ data.schoolname }}</span>
+    </div>
+  </div>
 
-<p class="mat-body-strong">School Name</p>
-<span class="mat-body">{{ data.schoolname }}</span>
+  <div class="row">
+    <div class="column">
+      <p class="mat-body-strong">Site Address</p>
+      <span class="mat-body">{{ data.siteaddress }}</span>
+    </div>
+    <div class="column">
+      <p class="mat-body-strong">Zip</p>
+      <span class="mat-body">{{ data.zip }}</span>
+    </div>
+  </div>
 
-<p class="mat-body-strong">Site Address</p>
-<span class="mat-body">{{ data.siteaddress }}</span>
+  <div class="row">
+    <div class="column">
+      <p class="mat-body-strong">Accessibility</p>
+      <span class="mat-body">{{ data.accessibility }}</span>
+    </div>
+    <div class="column">
+      <p class="mat-body-strong">Kosher Meal Type</p>
+      <span class="mat-body">{{ data.koshermealtype }}</span>
+    </div>
+  </div>
 
-<p class="mat-body-strong">Zip</p>
-<span class="mat-body">{{ data.zip }}</span>
-
-<p class="mat-body-strong">Accessibility</p>
-<span class="mat-body">{{ data.accessibility }}</span>
-
-<p class="mat-body-strong">Kosher Meal Type</p>
-<span class="mat-body">{{ data.koshermealtype }}</span>
-
-<iframe
-  width="100%"
-  height="450"
-  frameborder="0"
-  style="border:0"
-  [src]="url | safe"
-  allowfullscreen
->
-</iframe>
+  <iframe
+    width="100%"
+    height="350"
+    frameborder="0"
+    style="border:0"
+    [src]="url | safe"
+    allowfullscreen
+  >
+  </iframe>
+</mat-dialog-content>
