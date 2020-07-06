@@ -28,4 +28,18 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Screenshot
 
-![Overview of the application](screenshot.png)
+#### Langing Page
+
+![Landing Page](screenshots/landing.png)
+
+#### Filter Option
+
+![Landing Page](screenshots/filter.png)
+
+#### View Details Menu
+
+![Landing Page](screenshots/menu.png)
+
+#### View Details Dialog
+
+![Landing Page](screenshots/details.png)
